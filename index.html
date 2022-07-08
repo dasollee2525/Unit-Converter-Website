@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function FahrenheitToCelsius() {
+            const [data, setData] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+            const onChange = (event) => {
+                setData(event.target.value)
+            };
+            const reset = () => setData(0);
+            const onFlip = () => {
+                reset();
+                setFlipped((current) => !current);
+            };
+            return (
+                <div>
+                    <div>
+                        <label htmlFor="fahrenheit">Fahrenheit</label>
+                        <input 
+                            value={flipped ? Math.round((data * 1.8) + 32) : data}
+                            id="fahrenheit"
+                            placeholder="°F" 
+                            type="number"
+                            onChange={onChange} 
+                            disabled = {flipped}
+                        />
+                    </div>
+
+                    <div>
+                        <h4>↕</h4>
+                        <label htmlFor="celsius">Celsius</label>
+                        <input 
+                            value={flipped ? data : Math.round((data-32)/1.8)}
+                            id="celsius" 
+                            placeholder="°C" 
+                            type="number" 
+                            onChange={onChange}
+                            disabled = {!flipped}
+                        />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>{flipped ? "°F ⇀ °C" : "°C ⇀ °F"}</button>
+                </div>
+            );
+        }
+        function KMToMile() {
+            const [data, setData] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+            const onChange = (event) => {
+                setData(event.target.value)
+            };
+            const reset = () => setData(0);
+            const onFlip = () => {
+                reset();
+                setFlipped((current) => !current);
+            };
+            return (
+                <div>
+                    <div>
+                        <label htmlFor="kilometer">km</label>
+                        <input 
+                            value={flipped ? Math.round(data*1.609344*100)/100 : data}
+                            id="kilometer"
+                            placeholder="Kilometer" 
+                            type="number"
+                            onChange={onChange} 
+                            disabled = {flipped}
+                        />
+                    </div>
+
+                    <div>
+                        <h4>↕</h4>
+                        <label htmlFor="mile">mile</label>
+                        <input 
+                            value={flipped ? data : Math.round(data/1.609344*100)/100}
+                            id="mile" 
+                            placeholder="Mile" 
+                            type="number" 
+                            onChange={onChange}
+                            disabled = {!flipped}
+                        />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>{flipped ? "KM ⇀ Mile" : "Mile ⇀ KM"}</button>
+                </div>
+            );
+        }
+        function FtToCM() {
+            const [data, setData] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+            const onChange = (event) => {
+                setData(event.target.value)
+            };
+            const reset = () => setData(0);
+            const onFlip = () => {
+                reset();
+                setFlipped((current) => !current);
+            };
+            return (
+                <div>
+                    <div>
+                        <label htmlFor="feet">feet</label>
+                        <input 
+                            value={flipped ? Math.round(data/30.48*100)/100 : data}
+                            id="feet"
+                            placeholder="Feet" 
+                            type="number"
+                            onChange={onChange} 
+                            disabled = {flipped}
+                        />
+                        
+                    </div>
+
+                    <div>
+                        <h4>↕</h4>
+                        <label htmlFor="CM">cm</label>
+                        <input 
+                            value={flipped ? data : Math.round(data*30.48*100)/100}
+                            id="cm" 
+                            placeholder="CM" 
+                            type="number" 
+                            onChange={onChange}
+                            disabled = {!flipped}
+                        />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>{flipped ? "ft ⇀ cm" : "cm ⇀ ft"}</button>
+                </div>
+            );
+        }
+        function OzToML() {
+            const [data, setData] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+            const onChange = (event) => {
+                setData(event.target.value)
+            };
+            const reset = () => setData(0);
+            const onFlip = () => {
+                reset();
+                setFlipped((current) => !current);
+            };
+            return (
+                <div>
+                    <div>
+                        <label htmlFor="oz">oz</label>
+                        <input 
+                            value={flipped ? Math.round(data/29.57*100)/100 : data}
+                            id="oz"
+                            placeholder="oz" 
+                            type="number"
+                            onChange={onChange} 
+                            disabled = {flipped}
+                        />
+                    </div>
+
+                    <div>
+                        <h4>↕</h4>
+                        <label htmlFor="mL">mL</label>
+                        <input 
+                            value={flipped ? data : Math.round(data*29.57*100)/100}
+                            id="mL" 
+                            placeholder="mL" 
+                            type="number" 
+                            onChange={onChange}
+                            disabled = {!flipped}
+                        />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>{flipped ? "oz ⇀ mL" : "mL ⇀ oz"}</button>
+                </div>
+            );
+        }
+        
+        function App() {
+            const [index, setIndex] = React.useState("xx");
+            const onSelect =  (event) => {
+                setIndex(event.target.value);
+            };
+            return(
+                <div>
+                    <h1>미국에 있는 누군가를 위한 단위 변환기</h1>
+                    <select value={index} onChange={onSelect}>
+                        <option value="xx">당신을 헷갈리게 하는 단위 선택</option>
+                        <option value="0">°F & °C</option>
+                        <option value="1">km & mile</option>
+                        <option value="2">ft & cm</option>
+                        <option value="3">oz & mL</option>
+                    </select>
+                    <hr />
+                    <div id = "firstpage">
+                        {index === "xx" ? "" : null}
+                        {index === "0" ? <FahrenheitToCelsius /> : null}
+                        {index === "1" ? <KMToMile /> : null}
+                        {index === "2" ? <FtToCM /> : null}
+                        {index === "3" ? <OzToML /> : null}
+                    </div>
+                </div>
+            );
+        }        
+        const root = document.getElementById("root");
+        ReactDOM.render(<App />, root);
+    </script>
+</html>

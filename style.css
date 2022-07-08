@@ -1,0 +1,46 @@
+* {
+    background-color: #013328;
+}
+
+div {
+    text-align: center;
+    color: #E3DCD2;
+    font-family: Garamond;
+}
+
+h1 {
+    border: 7px solid #CC8B65;
+    width: 700px;
+    padding: 10px;
+    margin: 70px auto 70px;
+}
+
+label {
+    font-size: 35px;
+}
+
+select, h4, button, input {
+    font-size: 20px;
+    color: #E3DCD2;
+}
+
+select {
+    width: 400px;
+}
+
+button{
+    border: 1px solid #E3DCD2;
+    padding: 10px;
+    margin: 30px 15px 15px 0;
+}
+
+input {
+    border: 1px solid #E3DCD2;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+hr {
+    margin: 20px 0;
+}
+
